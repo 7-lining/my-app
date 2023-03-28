@@ -13,3 +13,10 @@ export default {
 }
 </script>
 
+<!-- 消除默认样式的白边 -->
+<style lang="less">
+  * {
+    margin: 0;
+    padding: 0;
+  }
+</style>

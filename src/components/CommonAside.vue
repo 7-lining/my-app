@@ -1,6 +1,9 @@
 <template>
     <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-        :collapse="isCollapse">
+        :collapse="isCollapse" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+        <!-- 添加属性背景颜色等 -->
+
+        <h3>欢迎登陆图书管理系统</h3>
 
         <!-- 寻找数据里的key，一般是data中固定不变的值 -->
         <!-- index查elementui文档发现是其唯一标识 -->
@@ -27,12 +30,26 @@
     </el-menu>
 </template>
 
-  
-<style>
+  <!-- 使用less来写，并且添加scope来让它作用于当前页面 -->
+<style lang="less" scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
 }
+
+.el-menu {
+    height: 100vh; //垂直到底
+    border-right: none;//取消宽度滚动条
+    h3 {
+        color: #ffd04b;
+        text-align: center;
+        line-height: 48px;
+        font-size: 16px;
+        font-weight: 800;
+    }
+}
+
+// 此处不引入less来写的话得一层层找祖先关系
 </style>
   
 <script>
