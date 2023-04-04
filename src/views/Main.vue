@@ -11,7 +11,7 @@
                 <el-main>
                     <h1>main</h1>
                     <!-- 路由出口 -->
-                    <!-- 路由匹配到的组件会渲染到此处 -->
+                    <!-- 路由匹配到的组件会渲染到此处,即Main视图的children子路由 -->
                     <router-view></router-view>
                 </el-main>
             </el-container>

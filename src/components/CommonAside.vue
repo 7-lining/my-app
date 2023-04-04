@@ -7,7 +7,7 @@
 
         <!-- 寻找数据里的key，一般是data中固定不变的值 -->
         <!-- index查elementui文档发现是其唯一标识 -->
-        <el-menu-item v-for="item in noChildren" :key="item.name" :index="item.name">
+        <el-menu-item @click="clickMenu(item)" v-for="item in noChildren" :key="item.name" :index="item.name">
             <!-- icon图标组件，不同图标根据官网查，字符串连接data里面的icon -->
             <!-- 使用模板字符串`` -->
             <i :class="`el-icon-${item.icon}`"></i>
@@ -22,7 +22,7 @@
             </template>
             <!-- 嵌套循环data里的children -->
             <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-                <el-menu-item :index="subItem.path">{{ subItem.label }}</el-menu-item>
+                <el-menu-item @click="clickMenu(subItem)" :index="subItem.path">{{ subItem.label }}</el-menu-item>
             </el-menu-item-group>
 
         </el-submenu>
@@ -39,7 +39,8 @@
 
 .el-menu {
     height: 100vh; //垂直到底
-    border-right: none;//取消宽度滚动条
+    border-right: none; //取消宽度滚动条
+
     h3 {
         color: #ffd04b;
         text-align: center;
@@ -109,6 +110,15 @@ export default {
         },
         handleClose(key, keyPath) {
             console.log(key, keyPath);
+        },
+        clickMenu(item) {
+            //console.log(item) 输出@click点击的项目
+
+            // 当前页面的路由与要跳转的路由不一致时才进行跳转
+            if (this.$route.path !== item.path && !((this.$route.path === '/home') && (item.path === '/'))) {
+                this.$router.push(item.path);// 点击跳转到目标路径
+            }
+
         }
     },
     computed: {
