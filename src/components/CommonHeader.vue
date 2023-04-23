@@ -1,7 +1,7 @@
 <template>
     <div class="header-container">
         <div class="l-content">
-            <el-button icon="el-icon-menu" circle size="mini"></el-button>
+            <el-button @click="handleMenu" icon="el-icon-menu" circle size="mini"></el-button>
             <!-- 面包屑区域 -->
             <span class="text">首页</span>
         </div>
@@ -23,6 +23,11 @@
 export default {
     data() {
         return {}
+    },
+    methods: {
+        handleMenu() {
+            this.$store.commit('collapseMenu');    //此处vm里面有$store因为之前在main.js里面挂载了store
+        }
     }
 }
 </script>

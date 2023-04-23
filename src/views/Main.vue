@@ -3,7 +3,7 @@
 
         <el-container>
             <!-- 在components文件夹下新建组件放进Aside里面 -->
-            <el-aside width="200px">
+            <el-aside width="atuo">
                 <CommonAside />
             </el-aside>
             <el-container>

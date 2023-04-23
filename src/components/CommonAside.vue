@@ -3,7 +3,8 @@
         :collapse="isCollapse" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
         <!-- 添加属性背景颜色等 -->
 
-        <h3>欢迎登陆图书管理系统</h3>
+        <!-- 根据是否展开菜单来显示菜单标题 -->
+        <h3>{{!isCollapse ? '欢迎登陆图书管理系统' : '菜单'}}</h3>
 
         <!-- 寻找数据里的key，一般是data中固定不变的值 -->
         <!-- index查elementui文档发现是其唯一标识 -->
@@ -58,7 +59,7 @@ export default {
     //导航数据
     data() {
         return {
-            isCollapse: false, //让导航栏默认不折叠
+            //isCollapse: false, //让导航栏默认不折叠
             menuData: [
                 {
                     path: "/",
@@ -134,6 +135,9 @@ export default {
             return this.menuData.filter(item => {
                 return item.children;
             })
+        },
+        isCollapse() {
+            return this.$store.state.tab.isCollapse
         }
     }
 }
